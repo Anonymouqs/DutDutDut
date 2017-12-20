@@ -77,14 +77,13 @@ MuseScore {
               var totalTime = 0;
               while (totalTime < maxTime)
                 {
-                var duration = Math.floor(Math.random() * noteLens.length);
+                var duration = Math.ceil(Math.random() * noteLens.length);
                 totalTime += 1/duration;
-
+                console.log(Math.random());
                   if(duration < maxTime)
                   {
                     cursor.setDuration(1, noteLens[duration]);
                     addNote(cursor);
-                    console.log(duration);
                   }
                 }
 
