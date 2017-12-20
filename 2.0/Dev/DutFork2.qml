@@ -12,10 +12,10 @@ MuseScore {
       width:  150
       height: 75
 
-      function addNote( cursor) {
-
-            cursor.addNote(50);
-            }
+      function addNote( cursor)
+      {
+        cursor.addNote(50);
+      }
 
       onRun: {}
       function startScore()
@@ -26,7 +26,7 @@ MuseScore {
             var noteLens = [2,4,8,16];
 
 
-            var score = newScore("Random.mscz", "marching-snare", measures);
+            var score = newScore("Dut.mscz", "marching-snare", measures);
 
             score.addText("title", "DutDutDutDut");
             score.addText("subtitle", "Dut");
@@ -76,20 +76,25 @@ MuseScore {
 
               var totalTime = 0;
               var count = 0;
+              console.log("NEW ITERATION");
               while (totalTime < maxTime)
                 {
                 count++;
+                console.log(" Cycle C#" + count);
                 var duration = Math.floor(Math.random() * noteLens.length);
+                console.log("duration value:" + duration);
+
+                var noteType = noteLens[duration];
                 //If statement checks if the note exceeds the measure threshold. If it does, then a note to fill in is added.
-                  if(totalTime + 1/duration <= maxTime)
+                  if(totalTime + 1/noteType <= maxTime)
                   {
-                    cursor.setDuration(1, noteLens[duration]);
-                    addNote(cursor);
-                    console.log("works");
+                    cursor.setDuration(1, noteType);
+                    cursor.addNote(50);
                   }
-                  else
+                  /*else
                   {
                       console.log("overflowDetected");
+                      cursor.nextMeasure();
                       //complete's measure if overflow is forsaw
                       var excess = maxTime - totalTime ;
                       console.log("excess" + excess);
@@ -98,10 +103,9 @@ MuseScore {
                       //cursor.setDuration(1, time);
                       //addNote(cursor);
 
-                  }
-                    totalTime += 1/duration;
+                  }*/
+                    totalTime += 1/noteType;
                     console.log("total" + totalTime);
-                    console.log("count" + count);
                 }
               }
 
