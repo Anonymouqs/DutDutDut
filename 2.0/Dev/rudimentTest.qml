@@ -17,16 +17,39 @@ MuseScore {
       {
         var base = 1;
         var strike = 50;
+
+        var sticking = 5;
+        //Math.floor(Math.random() * 2);
+        console.log("Rudiment # " + rud + " Sticking: " + sticking);
         switch(rud)
         {
           case 1:
-            cursor.setDuration(1,32/base)
-            var note  = newElement(Element.NOTE);
-            var text  = newElement(Element.STAFF_TEXT)
+          cursor.setDuration(1,32/base);
+          var text  = newElement(Element.STAFF_TEXT);
+
+            if (sticking == 0)
+            {
+
+              for(var i = 0; i <= 1; i++)
+              {
+              text.text = "L";
+              cursor.add(text);
+              cursor.addNote(strike);
+              text.text = "R";
+              cursor.add(text);
+              cursor.addNote(strike);
+            }
+
+          }
+          else if(sticking == 1)
+          {
             text.text = "L";
             cursor.add(text);
             cursor.addNote(strike);
-
+            text.text = "R";
+            cursor.add(text);
+            cursor.addNote(strike);
+          }
 
             console.log(cursor.element.notes[0].pitch);
 
