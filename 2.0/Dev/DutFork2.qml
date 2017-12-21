@@ -20,8 +20,9 @@ MuseScore {
       onRun: {}
       function startScore()
       {
-            var measures   = 18; //in 4/4 default time signature
-            var numerator  = 3;
+
+            var measures   = 4; //in 4/4 default time signature
+            var numerator  = 4;
             var denominator = 4;
             var noteLens = [2,4,8,16];
 
@@ -42,6 +43,10 @@ MuseScore {
 
             cursor.rewind(0);
             generateScore(numerator, measures, noteLens,cursor);
+
+            cursor.rewind(0);
+            removeSlur(cursor);
+
             /*var realMeasures = Math.ceil(measures * denominator / numerator);
             console.log(realMeasures);
             var notes = realMeasures * 4; //number of 1/4th notes
@@ -65,6 +70,17 @@ MuseScore {
                 Qt.quit();
 
           }
+
+          function removeSlur(cursor)
+          {
+            cursor.rewind(2);
+            print("stop" +cursor.tick);
+            cursor.rewind(0);
+            print("start" + cursor.tick);
+
+            print(cursor.element);
+          }
+
           function generateScore(maxTime, measures, noteLens, cursor)
           {
             //maxTime: Numerator, total number of beats in a measure
@@ -80,16 +96,22 @@ MuseScore {
               while (totalTime < maxTime)
                 {
                 count++;
-                console.log(" Cycle C#" + count);
+
+                console.log(" Cycle# " + count);
+
                 var duration = Math.floor(Math.random() * noteLens.length);
                 console.log("duration value:" + duration);
 
                 var noteType = noteLens[duration];
+
+                console.log("noteType:" + noteType);
+
                 //If statement checks if the note exceeds the measure threshold. If it does, then a note to fill in is added.
                   if(totalTime + 1/noteType <= maxTime)
                   {
                     cursor.setDuration(1, noteType);
-                    cursor.addNote(50);
+
+                    addNote(cursor);
                   }
                   /*else
                   {
@@ -110,6 +132,25 @@ MuseScore {
               }
 
               }
+
+              function rudimentGen(rud,cursor)
+              {
+                var base = 1;
+                var strike = 50;
+                switch(rud)
+                {
+                  case 1:
+                    cursor.setDuration(1,32/base)
+                    cursor.addNote(strike);
+
+                    break;
+
+                  default:
+                    break;
+
+                }
+              }
+
               GridLayout {
                   anchors.fill: parent
                   columns: 2
