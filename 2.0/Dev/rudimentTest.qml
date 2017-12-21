@@ -9,11 +9,13 @@ MuseScore {
         cursor.staffIdx = 0;
         cursor.voice = 0;
         cursor.rewind(0);
+        print(curScore.lastMeasure == cursor.measure);
 
         rudimentGen(1,cursor);
         //derp
         Qt.quit();
       }
+
       function rudimentGen(rud,cursor)
       {
         var base = 1;
