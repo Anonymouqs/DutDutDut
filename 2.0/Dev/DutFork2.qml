@@ -12,10 +12,12 @@ MuseScore {
       width:  150
       height: 75
 
+
       function addNote( cursor)
       {
         cursor.addNote(50);
       }
+
 
       onRun: {}
       function startScore()
@@ -23,11 +25,14 @@ MuseScore {
 
             var measures   = 4; //in 4/4 default time signature
             var numerator  = 4;
+
             var denominator = 4;
             var noteLens = [2,4,8,16];
 
 
+
             var score = newScore("Dut.mscz", "marching-snare", measures);
+
 
             score.addText("title", "DutDutDutDut");
             score.addText("subtitle", "Dut");
@@ -92,6 +97,7 @@ MuseScore {
 
               var totalTime = 0;
               var count = 0;
+
               console.log("NEW ITERATION");
               while (totalTime < maxTime)
                 {
@@ -117,6 +123,7 @@ MuseScore {
                   {
                       console.log("overflowDetected");
                       cursor.nextMeasure();
+
                       //complete's measure if overflow is forsaw
                       var excess = maxTime - totalTime ;
                       console.log("excess" + excess);
@@ -125,9 +132,11 @@ MuseScore {
                       //cursor.setDuration(1, time);
                       //addNote(cursor);
 
+
                   }*/
                     totalTime += 1/noteType;
                     console.log("total" + totalTime);
+
                 }
               }
 
