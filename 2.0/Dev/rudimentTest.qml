@@ -11,6 +11,7 @@ MuseScore {
         cursor.rewind(0);
 
         rudimentGen(1,cursor);
+        //derp
         Qt.quit();
       }
       function rudimentGen(rud,cursor)
