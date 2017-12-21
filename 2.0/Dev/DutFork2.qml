@@ -12,21 +12,27 @@ MuseScore {
       width:  150
       height: 75
 
+
       function addNote( cursor)
       {
         cursor.addNote(50);
       }
 
+
       onRun: {}
       function startScore()
       {
+
             var measures   = 4; //in 4/4 default time signature
             var numerator  = 4;
+
             var denominator = 4;
             var noteLens = [2,4,8,16];
 
 
+
             var score = newScore("Dut.mscz", "marching-snare", measures);
+
 
             score.addText("title", "DutDutDutDut");
             score.addText("subtitle", "Dut");
@@ -42,8 +48,10 @@ MuseScore {
 
             cursor.rewind(0);
             generateScore(numerator, measures, noteLens,cursor);
+
             cursor.rewind(0);
             removeSlur(cursor);
+
             /*var realMeasures = Math.ceil(measures * denominator / numerator);
             console.log(realMeasures);
             var notes = realMeasures * 4; //number of 1/4th notes
@@ -67,6 +75,7 @@ MuseScore {
                 Qt.quit();
 
           }
+
           function removeSlur(cursor)
           {
             cursor.rewind(2);
@@ -76,6 +85,7 @@ MuseScore {
 
             print(cursor.element);
           }
+
           function generateScore(maxTime, measures, noteLens, cursor)
           {
             //maxTime: Numerator, total number of beats in a measure
@@ -87,6 +97,7 @@ MuseScore {
 
               var totalTime = 0;
               var count = 0;
+
               console.log("NEW ITERATION");
               while (totalTime < maxTime)
                 {
@@ -107,6 +118,7 @@ MuseScore {
                   {
                       console.log("overflowDetected");
                       cursor.nextMeasure();
+
                       //complete's measure if overflow is forsaw
                       var excess = maxTime - totalTime ;
                       console.log("excess" + excess);
@@ -115,13 +127,16 @@ MuseScore {
                       //cursor.setDuration(1, time);
                       //addNote(cursor);
 
+
                   }*/
                     totalTime += 1/noteType;
                     console.log("total" + totalTime);
+
                 }
               }
 
               }
+
               function rudimentGen(rud,cursor)
               {
                 var base = 1;
@@ -139,6 +154,7 @@ MuseScore {
 
                 }
               }
+
               GridLayout {
                   anchors.fill: parent
                   columns: 2
