@@ -2,7 +2,7 @@ import QtQuick 2.1
 import MuseScore 1.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
-
+//First fork for implementing the new score generation algorithm
 MuseScore {
       version:  "2.1"
       description: "Create random score."
@@ -19,7 +19,8 @@ MuseScore {
             var measures   = 18; //in 4/4 default time signature
             var numerator  = 3;
             var denominator = 4;
-            var noteLens = [2,4,8,16];
+            var noteLens = [2,4,8,16];//Note lens is the array showing what note types are availalable.
+            //2 = half note; 4 = quarter note; 8 = eight note; 16 = 16th note and so on.
             var availableLen = noteLens.length; // total number of rhythm types available
 
 

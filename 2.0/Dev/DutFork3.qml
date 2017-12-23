@@ -3,7 +3,7 @@ import MuseScore 1.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 //Most of this code is heavily based off random2.qml from MuseScore. Modification of code began on Dec. 18
-//
+//DutFork3 was made to experiment with segments rather than cursors.
 MuseScore {
 			version:  "2.1"
 			description: "Create random score."
